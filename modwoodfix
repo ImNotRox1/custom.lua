@@ -1,0 +1,72 @@
+
+local custom = {}
+
+custom.__index = custom
+
+custom.Connections = {}
+
+function custom:TraceBack(...)
+
+    --if game:GetService"RunService":IsStudio() then
+
+        warn("[Custom-Service] :", ...)
+
+    --end
+    
+end
+
+function custom:Verify(Name)
+
+    return rawget(self.Connections, Name)
+
+end
+
+function custom:Register(Name, Callback)
+
+    local AlreadyExists = self:Verify(Name)
+
+    if AlreadyExists then
+
+        return self:TraceBack("Connection Already Exists")
+
+    end
+
+    self.Connections[Name] = Callback
+    
+end
+
+function custom:DeRegister(Name)
+
+    local Connection = self:Verify(Name)
+
+    if not Connection then
+
+        return false, self:TraceBack("Connection Not Found")
+
+    end
+
+    if typeof(Connection) == "RBXScriptConnection" then
+
+        Connection:Disconnect()
+
+    end
+
+    rawset(self.Connections, Name, nil)
+
+    return true, self:TraceBack("Connection Disconnected")
+    
+end
+
+function custom:ClearRegister()
+
+    for i, v in next, self.Connections do
+
+        self:DeRegister(i)
+
+    end
+
+    return true, self:TraceBack("Register Cleared")
+    
+end
+
+return custom
