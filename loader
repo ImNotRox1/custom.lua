@@ -2,6 +2,8 @@ if game.PlaceId == 13772394625 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ImNotRox1/custom.lua/refs/heads/main/bladeball"))("custom.lua on top")
 elseif game.PlaceId == 13822889 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ImNotRox1/custom.lua/refs/heads/main/lt2"))("custom.lua on top")
+elseif game.PlaceId == 15234596844 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ImNotRox1/custom.lua/refs/heads/main/bladeball"))("custom.lua on top")
 end
 
 -- CUSTOM . LUA ON TOP -- CUSTOM . LUA ON TOP -- CUSTOM . LUA ON TOP -- CUSTOM . LUA ON TOP -- CUSTOM . LUA ON TOP -- CUSTOM . LUA ON TOP
